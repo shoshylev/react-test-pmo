@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import DisplayForm from './components/displayForm';
+import DisplayTable, { json } from './components/displayTable';
+import TableRow from './components/tableRow';
+
+
+export const FormVisibility = React.createContext({
+  formVisibility: true,
+  index:0,
+  setFormVisibility: () => {},
+  setIndex:()=>{}
+});
 
 function App() {
+  const [formVisibility, setFormVisibility] = useState(true);
+  const [index, setIndex] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FormVisibility.Provider>
+      <div className="App">
+        {formVisibility}
+        <DisplayTable />
+      </div>
+      {formVisibility &&(<DisplayForm index={index}/>)}
+    
+    </FormVisibility.Provider>
   );
 }
 
