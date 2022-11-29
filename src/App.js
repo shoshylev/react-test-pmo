@@ -15,10 +15,13 @@ function App() {
   
   return (
     <RowIndexContextProvider>
+    <RowIndexContext.Consumer>{value => 
       <div className="App">
         <DisplayTable updateSelectedRow={updateRowIndex}/>
+      {value.rowId > -1 && (<DisplayForm rowIndex={value.rowId}/>)}
       </div>
-      {rowIndex > -1 &&(<DisplayForm rowIndex={rowIndex}/>)}
+    }
+    </RowIndexContext.Consumer>
     </RowIndexContextProvider>
   );
 }
