@@ -6,7 +6,7 @@ function DisplayForm(props) {
     const [website, setWebsite] = useState(json[props.index].website);
     const [websiteValid, setWebsiteValid] = useState(true);
     const [email, setEmail] = useState(json[props.index].email);
-    const [emailValid, setEmailValid] = useState(json[props.index].email);
+    const [emailValid, setEmailValid] = useState(true);
 
     const handleWebsiteChange = (e) => {
         if(isValidHttpUrl(e.target.value)){
@@ -30,18 +30,18 @@ function DisplayForm(props) {
 
     return <form>
     <label>name:</label>
-    <input name="name" value={json[props.index].name}></input>
+    <input name="name" defaultValue={json[props.index].name}></input>
     <br/>
     <label>website:</label>
-    <input type="text" className="form-control" name="website" value={website} onChange={handleWebsiteChange}/>
+    <input type="text" className="form-control" name="website" defaultValue={website} onChange={handleWebsiteChange}/>
     {!websiteValid &&(<label>not valid</label>)}
     <br/>
     <label>email:</label>
-    <input name="email" value={json[props.index].email} onChange={handleWebsiteChange}></input>
-    {!websiteValid &&(<label>not valid</label>)}
+    <input name="email" defaultValue={json[props.index].email} onChange={handleEmailChange}></input>
+    {!emailValid &&(<label>not valid</label>)}
     <br/>
     <label>phone:</label>
-    <input name="phone" value={json[props.index].phone}></input>
+    <input name="phone" defaultValue={json[props.index].phone}></input>
   </form>
 }
 
