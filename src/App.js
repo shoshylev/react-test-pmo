@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './App.css';
 import DisplayForm from './components/displayForm';
 import DisplayTable, { json } from './components/displayTable';
-
-
-export const FormVisibility = React.createContext({
-  rowIndex: -1,
-  setRowIndex: () => {}
-});
+import { RowIndexContext, RowIndexContextProvider } from './helpers/rowIndexContextHandler';
 
 function App() {
-  const [formVisibility, setFormVisibility] = useState(true);
   const [rowIndex, setRowIndex] = useState(-1);
 
   const updateRowIndex = (rowId) => {
     setRowIndex(rowId);
   };
+
+  const state = useContext(RowIndexContext);
   
   return (
-    <FormVisibility.Provider value={rowIndex}>
+    <RowIndexContextProvider>
       <div className="App">
         <DisplayTable updateSelectedRow={updateRowIndex}/>
       </div>
       {rowIndex > -1 &&(<DisplayForm rowIndex={rowIndex}/>)}
-    
-    </FormVisibility.Provider>
+    </RowIndexContextProvider>
   );
 }
 
