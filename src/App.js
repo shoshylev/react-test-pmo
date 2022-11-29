@@ -5,10 +5,8 @@ import DisplayTable, { json } from './components/displayTable';
 
 
 export const FormVisibility = React.createContext({
-  formVisibility: true,
-  index:0,
-  setFormVisibility: () => {},
-  setIndex:()=>{}
+  rowIndex: -1,
+  setRowIndex: () => {}
 });
 
 function App() {
@@ -17,15 +15,14 @@ function App() {
 
   const updateRowIndex = (rowId) => {
     setRowIndex(rowId);
-    console.log(rowIndex);
   };
-
+  
   return (
-    <FormVisibility.Provider>
+    <FormVisibility.Provider value={rowIndex}>
       <div className="App">
         <DisplayTable updateSelectedRow={updateRowIndex}/>
       </div>
-      {rowIndex > -1 &&(<DisplayForm index={rowIndex}/>)}
+      {rowIndex > -1 &&(<DisplayForm rowIndex={rowIndex}/>)}
     
     </FormVisibility.Provider>
   );

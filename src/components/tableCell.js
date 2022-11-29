@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FormVisibility } from '../App';
 function TableCell(props) {  
     const toggleOnCellClick=()=>{
-        console.log("click" + props.rowIndex);
         props.updateSelectedRow(props.rowIndex - 1);
     };
 
@@ -12,10 +11,10 @@ function TableCell(props) {
 }
 
 
-function TableCell3(props) {
+function TableCell1(props) {
     return <FormVisibility.Consumer>
-        {({ formVisibility, setFormVisibility, setIndex }) => (
-          <td onClick={()=>{setFormVisibility(!formVisibility);setIndex(props.rowIndex)}}>{props.displayValue}</td>
+        {({ rowIndex, setRowIndex }) => (
+          <td onClick={()=>{setRowIndex(props.rowIndex);}}>{props.displayValue}</td>
         )}
     </FormVisibility.Consumer>;
 }
