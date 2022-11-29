@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import DisplayForm from './components/displayForm';
 import DisplayTable, { json } from './components/displayTable';
-import TableRow from './components/tableRow';
 
 
 export const FormVisibility = React.createContext({
@@ -14,15 +13,19 @@ export const FormVisibility = React.createContext({
 
 function App() {
   const [formVisibility, setFormVisibility] = useState(true);
-  const [index, setIndex] = useState(0);
+  const [rowIndex, setRowIndex] = useState(-1);
+
+  const updateRowIndex = (rowId) => {
+    setRowIndex(rowId);
+    console.log(rowIndex);
+  };
 
   return (
     <FormVisibility.Provider>
       <div className="App">
-        {formVisibility}
-        <DisplayTable />
+        <DisplayTable updateSelectedRow={updateRowIndex}/>
       </div>
-      {formVisibility &&(<DisplayForm index={index}/>)}
+      {rowIndex > -1 &&(<DisplayForm index={rowIndex}/>)}
     
     </FormVisibility.Provider>
   );

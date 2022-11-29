@@ -3,6 +3,7 @@ import { FormVisibility } from '../App';
 function TableCell(props) {  
     const toggleOnCellClick=()=>{
         console.log("click" + props.rowIndex);
+        props.updateSelectedRow(props.rowIndex - 1);
     };
 
     return <FormVisibility.Provider>
