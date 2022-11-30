@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getUserData } from '../helpers/getUser';
+import { getUserData } from '../helpers/fetchDataHandler';
 import DisplayField from './displayField';
+
 function DisplayForm(props) {
     const [userData, setUserData] = useState({});
     

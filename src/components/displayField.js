@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Validators } from '../helpers/validationHelper';
+
 function DisplayField(props) {
     const fieldIndex = props.fieldName.toLowerCase();
     const getFieldValue = (fieldName) =>  props.data[fieldName] || '';
