@@ -5,7 +5,7 @@ function DisplayTable(props) {
     const header = [" Name", "Website", "Email"];
 
     return <div>
-        <table>
+        <table key="table">
         <thead>
           <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
         </thead>
