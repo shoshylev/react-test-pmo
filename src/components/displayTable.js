@@ -10,7 +10,7 @@ function DisplayTable(props) {
           <tr>{header.map((h, i) => <th key={i}>{h}</th>)}</tr>
         </thead>
         <tbody>
-            {json.map((rowData, i) => <TableRow data={rowData} updateSelectedRow={props.updateSelectedRow}/>)}
+            {json.map((rowData, i) => <TableRow data={rowData} />)}
         </tbody>
       </table>
     </div> 
