@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { json } from '../helpers/mockData';
 import { Validators } from '../helpers/validationHelper';
 function DisplayField(props) {
     const fieldIndex = props.fieldName.toLowerCase();
-    const getFieldValue = (fieldName, rowIndex) => rowIndex && json[rowIndex] && json[rowIndex][fieldName] || '';
+    const getFieldValue = (fieldName) =>  props.data[fieldName] || '';
     const [fieldValue, setFieldValue] = useState('');
     const [valueValid, setValueValid] = useState(true);
 
@@ -16,8 +15,10 @@ function DisplayField(props) {
             setValueValid(false);
         }
     };
-    
-    useEffect(() => setFieldValue(getFieldValue(fieldIndex, props.rowIndex)), [props.rowIndex]);
+
+    useEffect(() => setFieldValue(getFieldValue(fieldIndex, props.rowIndex)),
+     [props.rowIndex, props.data]
+     );
 
     return <div>
         <label>{props.fieldName}:</label>

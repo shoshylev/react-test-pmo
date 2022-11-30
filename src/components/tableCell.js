@@ -5,7 +5,12 @@ function TableCell(props) {
     const state = useContext(RowIndexContext);
 
     return <RowIndexContextProvider>
-          <td onClick={() => state.setRowId(props.rowIndex-1)}>{props.displayValue}</td>
+          <td 
+            onClick={() => state.setRowId(props.rowIndex)} 
+            onDoubleClick={() => state.setRowId(-1)}
+          >
+            {props.displayValue}
+          </td>
         </RowIndexContextProvider>;
 }
 
